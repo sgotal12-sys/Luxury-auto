@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <title>Nos modèles - Luxury Auto</title>
+  <style>
+    /* ==== STYLE GLOBAL ==== */
+    body {
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      background-color: #0e0e0e;
+      color: #f5f5f5;
+    }
+
+    header {
+      background-color: #000;
+      color: #d4af37;
+      text-align: center;
+      padding: 2rem 1rem;
+      letter-spacing: 2px;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 2.5rem;
+    }
+
+    /* ==== NAVIGATION ==== */
+    nav {
+      background-color: #111;
+      display: flex;
+      justify-content: center;
+      padding: 0.8rem 0;
+      border-top: 1px solid #222;
+      border-bottom: 1px solid #222;
+    }
+
+    nav a {
+      color: #f5f5f5;
+      text-decoration: none;
+      margin: 0 1.5rem;
+      text-transform: uppercase;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+
+    nav a:hover {
+      color: #d4af37;
+    }
+
+    h2 {
+      text-align: center;
+      color: #d4af37;
+      margin: 2rem 0;
+      font-size: 2rem;
+    }
+
+    /* ==== SECTION DES VOITURES ==== */
+    .cars {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 2rem;
+      padding: 3rem;
+    }
+
+    .car {
+      background-color: #181818;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+      transition: transform 0.3s ease;
+    }
+
+    .car:hover {
+      transform: scale(1.03);
+    }
+
+    .car img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+    }
+
+    .car-content {
+      padding: 1.2rem;
+    }
+
+    .car-content h3 {
+      color: #d4af37;
+      margin-bottom: 0.3rem;
+      font-size: 1.3rem;
+    }
+
+    .car-content p {
+      color: #ccc;
+      margin: 0.3rem 0;
+    }
+
+    .price {
+      color: #d4af37;
+      font-weight: bold;
+      margin-top: 0.5rem;
+      font-size: 1.1rem;
+    }
+
+    /* ==== BOUTON DÉTAILS ==== */
+    .details-btn {
+      display: inline-block;
+      margin-top: 1rem;
+      padding: 0.6rem 1.5rem;
+      background-color: #d4af37;
+      color: #000;
+      border-radius: 4px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: background 0.3s;
+      cursor: pointer;
+    }
+
+    .details-btn:hover {
+      background-color: #b89528;
+    }
+
+    /* ==== FENÊTRE MODALE ==== */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.8);
+      justify-content: center;
+      align-items: center;
+    }
+
+    .modal-content {
+      background-color: #111;
+      color: #fff;
+      border-radius: 10px;
+      padding: 2rem;
+      width: 90%;
+      max-width: 600px;
+      box-shadow: 0 0 15px rgba(212, 175, 55, 0.5);
+      text-align: center;
+      position: relative;
+      animation: fadeIn 0.3s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: scale(0.95); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    .close-btn {
+      background-color: transparent;
+      border: none;
+      color: #d4af37;
+      font-size: 1.8rem;
+      position: absolute;
+      top: 20px;
+      right: 30px;
+      cursor: pointer;
+    }
+
+    footer {
+      text-align: center;
+      background-color: #000;
+      color: #888;
+      padding: 1rem;
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Luxury Auto</h1>
+    <p>Nos modèles de prestige</p>
+  </header>
+
+  <nav>
+    <a href="luxury_auto.html">Accueil</a>
+    <a href="nos_modele.html">Nos modèles</a>
+    <a href="a_propos.html">À propos</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+
+  <h2>Découvrez notre sélection de voitures de luxe</h2>
+
+  <section class="cars">
+    <!-- Bugatti Chiron -->
+    <div class="car">
+      <img src="https://cdn.motor1.com/images/mgl/g4JYBP/s1/340483979_2528083417346894_8626063686631765830_n.jpg" alt="Bugatti Chiron">
+      <div class="car-content">
+        <h3>Bugatti Chiron</h3>
+        <p>2023 • 500 km • W16 8.0L Quad-Turbo</p>
+        <p class="price">3 000 000 €</p>
+        <button class="details-btn" onclick="showDetails('Bugatti Chiron', 'La Bugatti Chiron est une hypercar alliant puissance brute et raffinement, équipée d’un moteur W16 quad-turbo développant 1500 ch.')">Détails</button>
+      </div>
+    </div>
+
+    <!-- Ferrari SF90 -->
+    <div class="car">
+      <img src="https://e00-elmundo.uecdn.es/assets/multimedia/imagenes/2023/07/02/16882978814050.jpg" alt="Ferrari SF90 Stradale">
+      <div class="car-content">
+        <h3>Ferrari SF90 Stradale</h3>
+        <p>2022 • 2 000 km • Hybride V8 4.0L</p>
+        <p class="price">480 000 €</p>
+        <button class="details-btn" onclick="showDetails('Ferrari SF90 Stradale', 'Supercar hybride de 1000 ch combinant moteur thermique et électrique pour des performances exceptionnelles.')">Détails</button>
+      </div>
+    </div>
+
+    <!-- Lamborghini Huracán -->
+    <div class="car">
+      <img src="https://cdn.motor1.com/images/mgl/1Zz3jK/s1/lamborghini-huracan-tecnica.jpg" alt="Lamborghini Huracán">
+      <div class="car-content">
+        <h3>Lamborghini Huracán</h3>
+        <p>2021 • 3 000 km • V10 5.2L</p>
+        <p class="price">320 000 €</p>
+        <button class="details-btn" onclick="showDetails('Lamborghini Huracán', 'Une supercar italienne à moteur V10 offrant 640 ch et un design iconique, symbole du pur plaisir de conduite.')">Détails</button>
+      </div>
+    </div>
+
+    <!-- Rolls-Royce Ghost -->
+    <div class="car">
+      <img src="https://tse1.mm.bing.net/th/id/OIP.0PHcYD0o_pmPB1o0QUs6XwHaEK?cb=ucfimg2ucfimg=1&rs=1&pid=ImgDetMain&o=7&rm=3" alt="Rolls-Royce Ghost">
+      <div class="car-content">
+        <h3>Rolls-Royce Ghost</h3>
+        <p>2023 • 800 km • V12 6.7L</p>
+        <p class="price">420 000 €</p>
+        <button class="details-btn" onclick="showDetails('Rolls-Royce Ghost', 'La Rolls-Royce Ghost incarne le luxe absolu, combinant un confort inégalé et un moteur V12 d’une douceur légendaire.')">Détails</button>
+      </div>
+    </div>
+
+    <!-- Polestar 1 -->
+    <div class="car">
+      <img src="kenny-leys-CSNYeLpEbp0-unsplash.webp" alt="Polestar 1">
+      <div class="car-content">
+        <h3>Polestar 1</h3>
+        <p>2022 • 5 000 km • Hybride rechargeable</p>
+        <p class="price">159 900 €</p>
+        <button class="details-btn" onclick="showDetails('Polestar 1', 'Le coupé hybride scandinave Polestar 1 offre 600 ch et un design minimaliste, mariant élégance et performance écologique.')">Détails</button>
+      </div>
+    </div>
+
+    <!-- McLaren 720S -->
+    <div class="car">
+      <img src="https://bringatrailer.com/wp-content/uploads/2023/02/2020_mclaren_720s-spider-performance_720sb-21-03007.jpg" alt="McLaren 720S">
+      <div class="car-content">
+        <h3>McLaren 720S</h3>
+        <p>2022 • 1 200 km • V8 4.0L Biturbo</p>
+        <p class="price">310 000 €</p>
+        <button class="details-btn" onclick="showDetails('McLaren 720S', 'La McLaren 720S allie légèreté, aérodynamisme et moteur V8 biturbo de 720 ch pour une expérience de conduite pure.')">Détails</button>
+      </div>
+    </div>
+
+    <!-- Bugatti Noire -->
+    <div class="car">
+      <img src="6EDk9kuTURBXy84NjA1MDBhMC1kZjY2LTQ0MDktYWM5Zi0wZDM4YWZkYWVhYzMuanBlZ5KVAs0DJQDCw5UCAM0C-MLD3gABoTAB.jpg" alt="Bugatti Noire">
+      <div class="car-content">
+        <h3>Bugatti Noire</h3>
+        <p>2023 • 1 200 km • W16 8.0L Quad-Turbo</p>
+        <p class="price">2 700 000 €</p>
+        <button class="details-btn" onclick="showDetails('Bugatti Noire', 'Édition exclusive de la Chiron, la Bugatti Noire allie élégance et puissance démesurée, une œuvre d’art automobile unique.')">Détails</button>
+      </div>
+    </div>
+
+    <!-- Aston Martin DBS -->
+    <div class="car">
+      <img src="https://tse2.mm.bing.net/th/id/OIP.2n-T4OqdQ9PA5gD7PCcT0wHaEK?cb=ucfimg2ucfimg=1&rs=1&pid=ImgDetMain&o=7&rm=3" alt="Aston Martin DBS">
+      <div class="car-content">
+        <h3>Aston Martin DBS Superleggera</h3>
+        <p>2021 • 4 000 km • V12 5.2L Twin-Turbo</p>
+        <p class="price">380 000 €</p>
+        <button class="details-btn" onclick="showDetails('Aston Martin DBS Superleggera', 'La DBS Superleggera incarne la grand tourisme britannique : un V12 de 725 ch et une élégance intemporelle.')">Détails</button>
+      </div>
+    </div>
+
+    <!-- Lamborghini Aventador -->
+    <div class="car">
+      <img src="voiture-dans-garage-de-luxe.webp" alt="Lamborghini Aventador">
+      <div class="car-content">
+        <h3>Lamborghini Aventador</h3>
+        <p>2021 • 3 500 km • V12 6.5L</p>
+        <p class="price">490 000 €</p>
+        <button class="details-btn" onclick="showDetails('Lamborghini Aventador', 'Une icône du design italien. Son moteur V12 atmosphérique de 740 ch offre un rugissement inoubliable.')">Détails</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- MODALE -->
+  <div id="modal" class="modal">
+    <div class="modal-content">
+      <button class="close-btn" onclick="closeModal()">×</button>
+      <h3 id="modal-title"></h3>
+      <p id="modal-description"></p>
+    </div>
+  </div>
+
+  <footer>
+    © 2025 Luxury Auto — Tous droits réservés
+  </footer>
+
+  <script>
+    function showDetails(title, description) {
+      document.getElementById("modal-title").innerText = title;
+      document.getElementById("modal-description").innerText = description;
+      document.getElementById("modal").style.display = "flex";
+    }
+
+    function closeModal() {
+      document.getElementById("modal").style.display = "none";
+    }
+
+    window.onclick = function(event) {
+      const modal = document.getElementById("modal");
+      if (event.target === modal) {
+        modal.style.display = "none";
+      }
+    }
+  </script>
+</body>
+</html>
